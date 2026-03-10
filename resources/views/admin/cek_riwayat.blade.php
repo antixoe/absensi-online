@@ -81,7 +81,7 @@
                                         @if($var->updated_at == null)
                                             <span style="color: #999;">-</span>
                                         @else
-                                            {{ $var->updated_at->format('d/m/Y H:i') }}
+                                            {{ \Carbon\Carbon::parse($var->updated_at)->format('d/m/Y H:i') }}
                                         @endif
                                     </td>
                                     <td>

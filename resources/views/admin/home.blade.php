@@ -39,9 +39,9 @@
                     <h2>Total Admin</h2>
                     <h1>{{ $data_admin->count() }}</h1>
                     <time>
-                        Terakhir diubah: 
-                        @if($data_admin->latest("updated_at")->first())
-                            {{ $data_admin->latest("updated_at")->first()->updated_at->format('d/m/Y H:i') }}
+                        Terakhir diubah:
+                        @if($data_admin->latest("updated_at")->first() && $data_admin->latest("updated_at")->first()->updated_at)
+                            {{ \Carbon\Carbon::parse($data_admin->latest("updated_at")->first()->updated_at)->format('d/m/Y H:i') }}
                         @else
                             -
                         @endif
@@ -60,9 +60,9 @@
                     <h2>Total User</h2>
                     <h1>{{ $data_user->count() }}</h1>
                     <time>
-                        Terakhir diubah: 
-                        @if($data_user->latest("updated_at")->first())
-                            {{ $data_user->latest("updated_at")->first()->updated_at->format('d/m/Y H:i') }}
+                        Terakhir diubah:
+                        @if($data_user->latest("updated_at")->first() && $data_user->latest("updated_at")->first()->updated_at)
+                            {{ \Carbon\Carbon::parse($data_user->latest("updated_at")->first()->updated_at)->format('d/m/Y H:i') }}
                         @else
                             -
                         @endif
@@ -109,7 +109,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <small>{{ $d->created_at->format('d/m/Y') }}</small>
+                                        <small>{{ \Carbon\Carbon::parse($d->created_at)->format('d/m/Y') }}</small>
                                     </td>
                                 </tr>
                                 @endforeach
